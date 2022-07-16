@@ -4,12 +4,13 @@ namespace UniversityAPIBack.Models.DataModel
 {
     public class Course : BaseEntity
     {
-        [Required, MaxLength(50)]
+        [Required, StringLength(50)]
         public string Name { get; set; } = string.Empty;
 
-        [MaxLength(280)]
+        [Required, StringLength(280)]
         public string ShortDescription { get; set; } = string.Empty;
 
+        [Required]
         public string LongDescription { get; set; } = string.Empty;
 
         public string PublicObjetive { get; set; } = string.Empty;
@@ -20,6 +21,14 @@ namespace UniversityAPIBack.Models.DataModel
 
         public Level Level { get; set; }
 
+        [Required]
+        public Chapter Chapters { get; set; } = new Chapter();
+
+        [Required]
+        public ICollection<Category> Categories { get; set; } = new List<Category>();
+
+        [Required]
+        public ICollection<Student> Students { get; set; } = new List<Student>();
     }
 
     public enum Level
